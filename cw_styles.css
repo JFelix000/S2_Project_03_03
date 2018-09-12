@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
-@import url('https://fonts.googleapis.com/css?family=Limelight');
-
+/* Since the text is already here from the index, all I need to do is add in the layout css. */
+@import url('cw_layout.css');
 
 /* font-family: 'Limelight', cursive; */
 
@@ -12,7 +12,7 @@
    
    Civil War History Style Sheet
    Author: Jose Felix
-   Date: 09.09.18
+   Date: 09.10.18
    
    Filename: cw_styles.css
 
@@ -39,38 +39,106 @@ h1, h2 {
 body > header {
     background-color: rgb(97, 97, 211);
 }
+/* I have these as children of each other so that they can pass on the traits to the next section. Limelight needs to be in '' so that it is correctly read.  */
 body > header > h1 {
     font-size: 4vw;
     color: rgba(255, 255, 255, 0.8);
-    font-family: Limelight, cursive;
+    font-family: 'Limelight', cursive;
     margin: 0px;
 }
-body > header h1 span {
+body > header > h1 span {
     color: rgba(255, 255, 255, 0.4);
 }
 
 
 /* Navigation Styles */
-nav a:link {
+nav a {
     text-decoration: none;
 }
 /* I made sure to only type 5 and 0 px because we are lazy coders and we have the option to only list 2 if you had to make the top and bottom the same and left and right to be the same. */
-nav li#mainLinks {
+/* The a:visited goes after the mainlinks ID because in the html it is structured in that order. I have both of these under the same rules so that they can be processed with the same colors whether they are still or visited. This is like that so that the links stay white when clicked; still, it does not affect the hovering or opacity. */
+nav#mainLinks a:link, 
+nav#mainLinks a:visited {
     padding: 5px 0px;
+    color: white;
+}
+
+nav#mainLinks a:hover,  
+nav#mainLinks a:active {
+    color: white;
+    opacity: .8;
+    background-color: rgba(51, 51, 51, 0.5);
 }
 
 
 /* Outline Styles */
+nav#outline a{
+    color:  rgb(51, 51, 51);
+    font-size: 0.8em;
+}
 
+h1#outline {
+    text-align: center;
+}
+/* This works by having a child of the ol be only the first depth of ols in the code. When I add a second ol in my next style rule, it makes it so that it goes one ol deeper. */
+nav#outline > ol {
+    line-height: 2em;
+    margin: 0px 5px;
+    list-style-type: upper-roman;
 
+}
 
+nav#outline > ol ol {
+    list-style-type: upper-alpha;
+}
+/* The link and visited link affecters are separated by commas so that they follow the same rules as defined within the {}. */
+nav#outline > ol a:link,
+nav#outline > ol a:visited {
+    color: rgb(101, 101, 101);
+}
+
+nav#outline a:active,
+nav#outline a:hover {
+    color: rgb(97, 97, 211);
+    text-decoration: underline;
+}
 
 /* Section Styles */
+section {
+    background-color: rgb(220, 220, 220);
+}
 
-
+section header h1 {
+    font-size: 2.2em;
+    padding-left: 10px;
+}
 
 
 /* Article Styles */
+article h2 {
+    font-size: 1.4em;
+}
+
+/* I have this first of type and first letter pseudo elements so that they can identify that it wants the first of type and the first letter in the paragraph to change size. */
+ article p:first-of-type::first-letter {
+    font-size: 2em;
+    vertical-align: baseline;
+}
+
+
+
+
+/* Aside Styles */
+aside {
+    font-size: 0.9em;
+}
+
+aside h1 {
+    font-size: 1.4em;
+    text-align: center;
+}
+/* Footer Styles */
+/* Padding can be changed to only 1px and 0px and still be read, because they are descriping the top first and it moves clockwise. The sizes take the place of how it moves clockwise and it makes the top and bottom be 1, and the left and right to be 0px. */
 footer {
     color: white;
     background-color: rgb(101, 101, 101);
@@ -78,8 +146,3 @@ footer {
     text-align: center;
     padding: 1px 0px;
 }
-
-
-
-/* Aside Styles */
-
